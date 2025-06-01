@@ -19,7 +19,7 @@ jobs:
       - name: Linting
         uses: astral-sh/ruff-action@v3
         with:
-          args: "--config=pyproject.toml"
+          args: "check --config=pyproject.toml --diff"
       - name: Check code format
         uses: astral-sh/ruff-action@v3
         with:
