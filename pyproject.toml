@@ -15,7 +15,7 @@ classifiers = [
 dependencies = ["packaging~=25.0", "requests==2.32.3"]
 
 [project.urls]
-Homepage = "https://github.com/pepopo978/turtlewowsim"
+Homepage = "https://github.com/jadolg/rocketchat_API"
 
 [project.optional-dependencies]
 dev = ["pre-commit>=4.2.0", "ruff>=0.11.11"]
