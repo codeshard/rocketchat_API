@@ -16,11 +16,13 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: "3.13"
-      - name: Lint code
+      - name: Linting
         uses: astral-sh/ruff-action@v3
         with:
-          args: "--config=pyproject.toml --diff"
+          src: "./rocketchat_API"
+          args: "--config=pyproject.toml"
       - name: Check code format
         uses: astral-sh/ruff-action@v3
         with:
+          src: "./rocketchat_API"
           args: "format --config=pyproject.toml --check --diff"
