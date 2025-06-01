@@ -8,9 +8,10 @@ version = "0.6.2"
 description = "Python API wrapper for Rocket.Chat"
 authors = [{ name = "jadolg" }]
 readme = "README.md"
-requires-python = ">=3.13"
+requires-python = ">=3.9"
 classifiers = [
     "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
