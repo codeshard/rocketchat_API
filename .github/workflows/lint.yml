@@ -1,8 +1,8 @@
 name: Lint
 
 on:
-  pull_request:
-    branches: [ master ]
+  push:
+    branches: [master]
 
 jobs:
   lint:
@@ -16,7 +16,11 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: "3.13"
-      - name: Install black
-        run: pip install black
-      - name: Lint with black
-        run: black --check --diff .
+      - name: Lint code
+        uses: astral-sh/ruff-action@v3
+        with:
+          args: "--config=pyproject.toml --diff"
+      - name: Check code format
+        uses: astral-sh/ruff-action@v3
+        with:
+          args: "format --config=pyproject.toml --check --diff"
