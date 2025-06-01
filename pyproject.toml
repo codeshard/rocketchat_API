@@ -1,3 +1,7 @@
+[build-system]
+requires = ["setuptools", "setuptools-scm"]
+build-backend = "setuptools.build_meta"
+
 [project]
 name = "rocketchat_API"
 version = "0.6.2"
@@ -19,6 +23,12 @@ Homepage = "https://github.com/jadolg/rocketchat_API"
 
 [project.optional-dependencies]
 dev = ["pre-commit>=4.2.0", "ruff>=0.11.11"]
+
+[project.scripts]
+rocketchat_API = "rocketchat_API"
+
+[tool.setuptools]
+packages = ["rocketchat_API"]
 
 [tool.ruff]
 line-length = 79
