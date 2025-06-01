@@ -1,4 +1,6 @@
-from rocketchat_API.APIExceptions.RocketExceptions import RocketMissingParamException
+from rocketchat_API.APIExceptions.RocketExceptions import (
+    RocketMissingParamException,
+)
 from rocketchat_API.APISections.base import RocketChatBase
 
 
@@ -17,7 +19,9 @@ class RocketChatIM(RocketChatBase):
 
     def im_create(self, username, **kwargs):
         """Create a direct message session with another user."""
-        return self.call_api_post("im.create", username=username, kwargs=kwargs)
+        return self.call_api_post(
+            "im.create", username=username, kwargs=kwargs
+        )
 
     def im_create_multiple(self, usernames, **kwargs):
         """Create a direct message session with one or more users."""
@@ -49,7 +53,9 @@ class RocketChatIM(RocketChatBase):
 
     def im_messages_others(self, room_id, **kwargs):
         """Retrieves the messages from any direct message in the server"""
-        return self.call_api_get("im.messages.others", roomId=room_id, kwargs=kwargs)
+        return self.call_api_get(
+            "im.messages.others", roomId=room_id, kwargs=kwargs
+        )
 
     def im_set_topic(self, room_id, topic, **kwargs):
         """Sets the topic for the direct message"""
@@ -62,11 +68,15 @@ class RocketChatIM(RocketChatBase):
         if room_id:
             return self.call_api_get("im.files", roomId=room_id, kwargs=kwargs)
         if user_name:
-            return self.call_api_get("im.files", username=user_name, kwargs=kwargs)
+            return self.call_api_get(
+                "im.files", username=user_name, kwargs=kwargs
+            )
         raise RocketMissingParamException("roomId or username required")
 
     def im_counters(self, room_id, user_name=None):
         """Gets counters of direct messages."""
         if user_name:
-            return self.call_api_get("im.counters", roomId=room_id, username=user_name)
+            return self.call_api_get(
+                "im.counters", roomId=room_id, username=user_name
+            )
         return self.call_api_get("im.counters", roomId=room_id)

@@ -174,7 +174,9 @@ class RocketChatBase:
             self.headers["X-Auth-Token"] = (
                 login_request.json().get("data").get("authToken")
             )
-            self.headers["X-User-Id"] = login_request.json().get("data").get("userId")
+            self.headers["X-User-Id"] = (
+                login_request.json().get("data").get("userId")
+            )
             return login_request
 
         raise RocketConnectionException()

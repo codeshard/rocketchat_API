@@ -1,4 +1,6 @@
-from rocketchat_API.APIExceptions.RocketExceptions import RocketMissingParamException
+from rocketchat_API.APIExceptions.RocketExceptions import (
+    RocketMissingParamException,
+)
 from rocketchat_API.APISections.base import RocketChatBase
 
 
@@ -16,26 +18,38 @@ class RocketChatGroups(RocketChatBase):
 
     def groups_history(self, room_id, **kwargs):
         """Retrieves the messages from a private group."""
-        return self.call_api_get("groups.history", roomId=room_id, kwargs=kwargs)
+        return self.call_api_get(
+            "groups.history", roomId=room_id, kwargs=kwargs
+        )
 
     def groups_add_moderator(self, room_id, user_id, **kwargs):
         """Gives the role of moderator for a user in the current groups."""
         return self.call_api_post(
-            "groups.addModerator", roomId=room_id, userId=user_id, kwargs=kwargs
+            "groups.addModerator",
+            roomId=room_id,
+            userId=user_id,
+            kwargs=kwargs,
         )
 
     def groups_remove_moderator(self, room_id, user_id, **kwargs):
         """Removes the role of moderator from a user in the current groups."""
         return self.call_api_post(
-            "groups.removeModerator", roomId=room_id, userId=user_id, kwargs=kwargs
+            "groups.removeModerator",
+            roomId=room_id,
+            userId=user_id,
+            kwargs=kwargs,
         )
 
     def groups_moderators(self, room_id=None, group=None, **kwargs):
         """Lists all moderators of a group."""
         if room_id:
-            return self.call_api_get("groups.moderators", roomId=room_id, kwargs=kwargs)
+            return self.call_api_get(
+                "groups.moderators", roomId=room_id, kwargs=kwargs
+            )
         if group:
-            return self.call_api_get("groups.moderators", roomName=group, kwargs=kwargs)
+            return self.call_api_get(
+                "groups.moderators", roomName=group, kwargs=kwargs
+            )
         raise RocketMissingParamException("room_id or group required")
 
     def groups_add_owner(self, room_id, user_id, **kwargs):
@@ -52,15 +66,21 @@ class RocketChatGroups(RocketChatBase):
 
     def groups_archive(self, room_id, **kwargs):
         """Archives a private group, only if you're part of the group."""
-        return self.call_api_post("groups.archive", roomId=room_id, kwargs=kwargs)
+        return self.call_api_post(
+            "groups.archive", roomId=room_id, kwargs=kwargs
+        )
 
     def groups_unarchive(self, room_id, **kwargs):
         """Unarchives a private group."""
-        return self.call_api_post("groups.unarchive", roomId=room_id, kwargs=kwargs)
+        return self.call_api_post(
+            "groups.unarchive", roomId=room_id, kwargs=kwargs
+        )
 
     def groups_close(self, room_id, **kwargs):
         """Removes the private group from the user's list of groups, only if you're part of the group."""
-        return self.call_api_post("groups.close", roomId=room_id, kwargs=kwargs)
+        return self.call_api_post(
+            "groups.close", roomId=room_id, kwargs=kwargs
+        )
 
     def groups_create(self, name, **kwargs):
         """Creates a new private group, optionally including users, only if you're part of the group."""
@@ -75,9 +95,13 @@ class RocketChatGroups(RocketChatBase):
     def groups_info(self, room_id=None, room_name=None, **kwargs):
         """GRetrieves the information about the private group, only if you're part of the group."""
         if room_id:
-            return self.call_api_get("groups.info", roomId=room_id, kwargs=kwargs)
+            return self.call_api_get(
+                "groups.info", roomId=room_id, kwargs=kwargs
+            )
         if room_name:
-            return self.call_api_get("groups.info", roomName=room_name, kwargs=kwargs)
+            return self.call_api_get(
+                "groups.info", roomName=room_name, kwargs=kwargs
+            )
         raise RocketMissingParamException("room_id or roomName required")
 
     def groups_invite(self, room_id, user_id, **kwargs):
@@ -94,7 +118,9 @@ class RocketChatGroups(RocketChatBase):
 
     def groups_leave(self, room_id, **kwargs):
         """Causes the callee to be removed from the private group, if they're part of it and are not the last owner."""
-        return self.call_api_post("groups.leave", roomId=room_id, kwargs=kwargs)
+        return self.call_api_post(
+            "groups.leave", roomId=room_id, kwargs=kwargs
+        )
 
     def groups_open(self, room_id, **kwargs):
         """Adds the private group back to the user's list of private groups."""
@@ -167,33 +193,49 @@ class RocketChatGroups(RocketChatBase):
     def groups_delete(self, room_id=None, group=None, **kwargs):
         """Delete a private group."""
         if room_id:
-            return self.call_api_post("groups.delete", roomId=room_id, kwargs=kwargs)
+            return self.call_api_post(
+                "groups.delete", roomId=room_id, kwargs=kwargs
+            )
         if group:
-            return self.call_api_post("groups.delete", roomName=group, kwargs=kwargs)
+            return self.call_api_post(
+                "groups.delete", roomName=group, kwargs=kwargs
+            )
         raise RocketMissingParamException("room_id or group required")
 
     def groups_members(self, room_id=None, group=None, **kwargs):
         """Lists all group users."""
         if room_id:
-            return self.call_api_get("groups.members", roomId=room_id, kwargs=kwargs)
+            return self.call_api_get(
+                "groups.members", roomId=room_id, kwargs=kwargs
+            )
         if group:
-            return self.call_api_get("groups.members", roomName=group, kwargs=kwargs)
+            return self.call_api_get(
+                "groups.members", roomName=group, kwargs=kwargs
+            )
         raise RocketMissingParamException("room_id or group required")
 
     def groups_roles(self, room_id=None, room_name=None, **kwargs):
         """Lists all user's roles in the private group."""
         if room_id:
-            return self.call_api_get("groups.roles", roomId=room_id, kwargs=kwargs)
+            return self.call_api_get(
+                "groups.roles", roomId=room_id, kwargs=kwargs
+            )
         if room_name:
-            return self.call_api_get("groups.roles", roomName=room_name, kwargs=kwargs)
+            return self.call_api_get(
+                "groups.roles", roomName=room_name, kwargs=kwargs
+            )
         raise RocketMissingParamException("room_id or room_name required")
 
     def groups_files(self, room_id=None, room_name=None, **kwargs):
         """Retrieves the files from a private group."""
         if room_id:
-            return self.call_api_get("groups.files", roomId=room_id, kwargs=kwargs)
+            return self.call_api_get(
+                "groups.files", roomId=room_id, kwargs=kwargs
+            )
         if room_name:
-            return self.call_api_get("groups.files", roomName=room_name, kwargs=kwargs)
+            return self.call_api_get(
+                "groups.files", roomName=room_name, kwargs=kwargs
+            )
         raise RocketMissingParamException("room_id or room_name required")
 
     def groups_add_leader(self, room_id, user_id, **kwargs):
@@ -205,5 +247,8 @@ class RocketChatGroups(RocketChatBase):
     def groups_remove_leader(self, room_id, user_id, **kwargs):
         """Removes the role of Leader for a user in the current group."""
         return self.call_api_post(
-            "groups.removeLeader", roomId=room_id, userId=user_id, kwargs=kwargs
+            "groups.removeLeader",
+            roomId=room_id,
+            userId=user_id,
+            kwargs=kwargs,
         )

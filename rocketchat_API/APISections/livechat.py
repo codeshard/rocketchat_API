@@ -18,11 +18,15 @@ class RocketChatLivechat(RocketChatBase):
 
     def livechat_get_users(self, user_type, **kwargs):
         """Get a list of agents or managers."""
-        return self.call_api_get("livechat/users/{}".format(user_type), kwargs=kwargs)
+        return self.call_api_get(
+            "livechat/users/{}".format(user_type), kwargs=kwargs
+        )
 
     def livechat_create_user(self, user_type, **kwargs):
         """Register a new agent or manager."""
-        return self.call_api_post("livechat/users/{}".format(user_type), kwargs=kwargs)
+        return self.call_api_post(
+            "livechat/users/{}".format(user_type), kwargs=kwargs
+        )
 
     def livechat_get_user(self, user_type, user_id, **kwargs):
         """Get info about an agent or manager."""
@@ -32,7 +36,9 @@ class RocketChatLivechat(RocketChatBase):
 
     def livechat_delete_user(self, user_type, user_id):
         """Removes an agent or manager."""
-        return self.call_api_delete("livechat/users/{}/{}".format(user_type, user_id))
+        return self.call_api_delete(
+            "livechat/users/{}/{}".format(user_type, user_id)
+        )
 
     def livechat_register_visitor(self, token, **kwargs):
         """Register a new Livechat visitor."""
@@ -58,5 +64,7 @@ class RocketChatLivechat(RocketChatBase):
     def livechat_messages_history(self, rid, token, **kwargs):
         """Load Livechat messages history."""
         return self.call_api_get(
-            "livechat/messages.history/{}".format(rid), token=token, kwargs=kwargs
+            "livechat/messages.history/{}".format(rid),
+            token=token,
+            kwargs=kwargs,
         )

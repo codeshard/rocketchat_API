@@ -1,7 +1,9 @@
 import mimetypes
 import os
 
-from rocketchat_API.APIExceptions.RocketExceptions import RocketMissingParamException
+from rocketchat_API.APIExceptions.RocketExceptions import (
+    RocketMissingParamException,
+)
 from rocketchat_API.APISections.base import RocketChatBase
 
 
@@ -13,9 +15,13 @@ class RocketChatUsers(RocketChatBase):
     def users_info(self, user_id=None, username=None, **kwargs):
         """Gets a user's information, limited to the caller's permissions."""
         if user_id:
-            return self.call_api_get("users.info", userId=user_id, kwargs=kwargs)
+            return self.call_api_get(
+                "users.info", userId=user_id, kwargs=kwargs
+            )
         if username:
-            return self.call_api_get("users.info", username=username, kwargs=kwargs)
+            return self.call_api_get(
+                "users.info", username=username, kwargs=kwargs
+            )
         raise RocketMissingParamException("userID or username required")
 
     def users_list(self, **kwargs):
@@ -25,7 +31,9 @@ class RocketChatUsers(RocketChatBase):
     def users_get_presence(self, user_id=None, username=None, **kwargs):
         """Gets the online presence of the a user."""
         if user_id:
-            return self.call_api_get("users.getPresence", userId=user_id, kwargs=kwargs)
+            return self.call_api_get(
+                "users.getPresence", userId=user_id, kwargs=kwargs
+            )
         if username:
             return self.call_api_get(
                 "users.getPresence", username=username, kwargs=kwargs
@@ -85,7 +93,9 @@ class RocketChatUsers(RocketChatBase):
 
     def users_set_avatar(self, avatar_url, **kwargs):
         """Set a user's avatar"""
-        if avatar_url.startswith("http://") or avatar_url.startswith("https://"):
+        if avatar_url.startswith("http://") or avatar_url.startswith(
+            "https://"
+        ):
             return self.call_api_post(
                 "users.setAvatar", avatarUrl=avatar_url, kwargs=kwargs
             )
@@ -98,7 +108,9 @@ class RocketChatUsers(RocketChatBase):
             ),
         }
 
-        return self.call_api_post("users.setAvatar", files=avatar_file, kwargs=kwargs)
+        return self.call_api_post(
+            "users.setAvatar", files=avatar_file, kwargs=kwargs
+        )
 
     def users_reset_avatar(self, user_id=None, username=None, **kwargs):
         """Reset a user's avatar"""
@@ -139,7 +151,9 @@ class RocketChatUsers(RocketChatBase):
 
     def users_forgot_password(self, email, **kwargs):
         """Send email to reset your password."""
-        return self.call_api_post("users.forgotPassword", email=email, data=kwargs)
+        return self.call_api_post(
+            "users.forgotPassword", email=email, data=kwargs
+        )
 
     def users_get_preferences(self, **kwargs):
         """Gets all preferences of user."""
@@ -153,4 +167,6 @@ class RocketChatUsers(RocketChatBase):
 
     def users_set_status(self, message, **kwargs):
         """Sets a user Status when the status message and state is given."""
-        return self.call_api_post("users.setStatus", message=message, kwargs=kwargs)
+        return self.call_api_post(
+            "users.setStatus", message=message, kwargs=kwargs
+        )

@@ -1,4 +1,6 @@
-from rocketchat_API.APIExceptions.RocketExceptions import RocketMissingParamException
+from rocketchat_API.APIExceptions.RocketExceptions import (
+    RocketMissingParamException,
+)
 from rocketchat_API.APISections.base import RocketChatBase
 
 ID_OR_TEAM_NAME_REQUIRED = "team_id or team_name required"
@@ -14,9 +16,13 @@ class RocketChatTeams(RocketChatBase):
     def teams_delete(self, team_id=None, team_name=None, **kwargs):
         """Delete a team."""
         if team_id:
-            return self.call_api_post("teams.delete", teamId=team_id, kwargs=kwargs)
+            return self.call_api_post(
+                "teams.delete", teamId=team_id, kwargs=kwargs
+            )
         if team_name:
-            return self.call_api_post("teams.delete", teamName=team_name, kwargs=kwargs)
+            return self.call_api_post(
+                "teams.delete", teamName=team_name, kwargs=kwargs
+            )
         raise RocketMissingParamException(ID_OR_TEAM_NAME_REQUIRED)
 
     def teams_list_all(self, **kwargs):
@@ -33,9 +39,13 @@ class RocketChatTeams(RocketChatBase):
         the team.
         """
         if team_id:
-            return self.call_api_get("teams.info", teamId=team_id, kwargs=kwargs)
+            return self.call_api_get(
+                "teams.info", teamId=team_id, kwargs=kwargs
+            )
         if team_name:
-            return self.call_api_get("teams.info", teamName=team_name, kwargs=kwargs)
+            return self.call_api_get(
+                "teams.info", teamName=team_name, kwargs=kwargs
+            )
         raise RocketMissingParamException(ID_OR_TEAM_NAME_REQUIRED)
 
     def teams_members(
@@ -60,39 +70,63 @@ class RocketChatTeams(RocketChatBase):
             )
         raise RocketMissingParamException(ID_OR_TEAM_NAME_REQUIRED)
 
-    def teams_add_members(self, team_id=None, team_name=None, members=None, **kwargs):
+    def teams_add_members(
+        self, team_id=None, team_name=None, members=None, **kwargs
+    ):
         """Adds members to the team."""
         if team_id:
             return self.call_api_post(
-                "teams.addMembers", teamId=team_id, members=members, kwargs=kwargs
+                "teams.addMembers",
+                teamId=team_id,
+                members=members,
+                kwargs=kwargs,
             )
         if team_name:
             return self.call_api_post(
-                "teams.addMembers", teamName=team_name, members=members, kwargs=kwargs
+                "teams.addMembers",
+                teamName=team_name,
+                members=members,
+                kwargs=kwargs,
             )
         raise RocketMissingParamException(ID_OR_TEAM_NAME_REQUIRED)
 
-    def teams_remove_member(self, team_id=None, team_name=None, user_id=None, **kwargs):
+    def teams_remove_member(
+        self, team_id=None, team_name=None, user_id=None, **kwargs
+    ):
         """Removes a member from a team. Requires edit-team-member permission."""
         if team_id:
             return self.call_api_post(
-                "teams.removeMember", teamId=team_id, userId=user_id, kwargs=kwargs
+                "teams.removeMember",
+                teamId=team_id,
+                userId=user_id,
+                kwargs=kwargs,
             )
         if team_name:
             return self.call_api_post(
-                "teams.removeMember", teamName=team_name, userId=user_id, kwargs=kwargs
+                "teams.removeMember",
+                teamName=team_name,
+                userId=user_id,
+                kwargs=kwargs,
             )
         raise RocketMissingParamException(ID_OR_TEAM_NAME_REQUIRED)
 
-    def teams_update_member(self, team_id=None, team_name=None, member=None, **kwargs):
+    def teams_update_member(
+        self, team_id=None, team_name=None, member=None, **kwargs
+    ):
         """Updates a team member's roles. Requires edit-team-member permission."""
         if team_id:
             return self.call_api_post(
-                "teams.updateMember", teamId=team_id, member=member, kwargs=kwargs
+                "teams.updateMember",
+                teamId=team_id,
+                member=member,
+                kwargs=kwargs,
             )
         if team_name:
             return self.call_api_post(
-                "teams.updateMember", teamName=team_name, member=member, kwargs=kwargs
+                "teams.updateMember",
+                teamName=team_name,
+                member=member,
+                kwargs=kwargs,
             )
         raise RocketMissingParamException(ID_OR_TEAM_NAME_REQUIRED)
 
@@ -118,7 +152,9 @@ class RocketChatTeams(RocketChatBase):
             )
         raise RocketMissingParamException(ID_OR_TEAM_NAME_REQUIRED)
 
-    def teams_add_rooms(self, team_id=None, team_name=None, rooms=None, **kwargs):
+    def teams_add_rooms(
+        self, team_id=None, team_name=None, rooms=None, **kwargs
+    ):
         """Adds rooms to the team. Requires add-team-channel permission."""
         if team_id:
             return self.call_api_post(
@@ -136,7 +172,9 @@ class RocketChatTeams(RocketChatBase):
             )
         raise RocketMissingParamException(ID_OR_TEAM_NAME_REQUIRED)
 
-    def teams_remove_room(self, team_id=None, team_name=None, room_id=None, **kwargs):
+    def teams_remove_room(
+        self, team_id=None, team_name=None, room_id=None, **kwargs
+    ):
         """Removes a room from a team. Requires remove-team-channel permission."""
         if team_id:
             return self.call_api_post(
