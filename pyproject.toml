@@ -1,0 +1,34 @@
+[project]
+name = "rocketchat_API"
+version = "0.6.2"
+description = "Python API wrapper for Rocket.Chat"
+authors = [{ name = "jadolg" }]
+readme = "README.md"
+requires-python = ">=3.13"
+classifiers = [
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+]
+dependencies = ["packaging~=25.0", "requests==2.32.3"]
+
+[project.urls]
+Homepage = "https://github.com/pepopo978/turtlewowsim"
+
+[project.optional-dependencies]
+dev = ["pre-commit>=4.2.0", "ruff>=0.11.11"]
+
+[tool.ruff]
+line-length = 79
+target-version = "py313"
+fix = true
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "W", "N"]
+ignore = []
+
+[tool.ruff.format]
+docstring-code-format = true
+docstring-code-line-length = 79
